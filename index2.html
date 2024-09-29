@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiragana to Romaji Quiz</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .hiragana {
+            font-size: 100px;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            font-size: 30px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #fff;
+            color: #000;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="hiragana" id="hiraganaDisplay">あ</div>
+    <input type="text" id="romajiInput" placeholder="Enter romaji">
+    <button onclick="checkRomaji()">Submit</button>
+
+    <script>
+        const hiraganaList = [
+            { hiragana: "あ", romaji: "a" }, { hiragana: "い", romaji: "i" },
+            { hiragana: "う", romaji: "u" }, { hiragana: "え", romaji: "e" },
+            { hiragana: "お", romaji: "o" }, { hiragana: "か", romaji: "ka" },
+            { hiragana: "き", romaji: "ki" }, { hiragana: "く", romaji: "ku" },
+            { hiragana: "け", romaji: "ke" }, { hiragana: "こ", romaji: "ko" },
+	    { hiragana: "さ", romaji: "sa" }, { hiragana: "し", romaji: "shi" },
+	    { hiragana: "す", romaji: "su" }, { hiragana: "せ", romaji: "se" },
+	    { hiragana: "そ", romaji: "so" }, { hiragana: "た", romaji: "ta" },
+	    { hiragana: "ち", romaji: "chi" }, { hiragana: "つ", romaji: "tsu" },
+	    { hiragana: "て", romaji: "te" }, { hiragana: "と", romaji: "to" },
+	    +{ hiragana: "な", romaji: "na" }, { hiragana: "に", romaji: "ni" },
+	    { hiragana: "ぬ", romaji: "nu" }, { hiragana: "ね", romaji: "ne" },
+	    { hiragana: "の", romaji: "no" }, { hiragana: "は", romaji: "ha" },
+	    { hiragana: "ひ", romaji: "hi" }, { hiragana: "ふ", romaji: "fu" },
+	    { hiragana: "へ", romaji: "he" }, { hiragana: "ほ", romaji: "ho" },
+	    { hiragana: "ま", romaji: "ma" }, { hiragana: "み", romaji: "mi" },
+	    { hiragana: "む", romaji: "mu" }, { hiragana: "め", romaji: "me" },
+	    { hiragana: "も", romaji: "mo" },
+	    
+
+            // Add more Hiragana and Romaji pairs here as needed
+
+        ];
+
+        let currentIndex = 0;
+
+        function displayHiragana() {
+            document.getElementById("hiraganaDisplay").textContent = hiraganaList[currentIndex].hiragana;
+        }
+
+        function checkRomaji() {
+            const userInput = document.getElementById("romajiInput").value.toLowerCase();
+            const correctRomaji = hiraganaList[currentIndex].romaji;
+
+            if (userInput === correctRomaji) {
+                currentIndex++;
+                if (currentIndex >= hiraganaList.length) {
+                    currentIndex = 0;  // Restart when all are done
+                }
+                document.getElementById("romajiInput").value = "";  // Clear input field
+                displayHiragana();
+            } else {
+                alert("Incorrect! Try again.");
+            }
+        }
+
+        // Display the first hiragana when page loads
+        displayHiragana();
+    </script>
+</body>
+</html>
